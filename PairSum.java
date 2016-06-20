@@ -13,7 +13,7 @@ public class PairSum {
 	     int n = 18;
 	     int[] result = new int[2];
 	     result = twoSum(arr,n);
-	     System.out.println(Arrays.toString(result));
+	     System.out.println("The array indices are as follows "+Arrays.toString(result));
 
 	}
 
