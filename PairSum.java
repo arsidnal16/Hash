@@ -1,29 +1,32 @@
 package Hash;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class PairSum {
 	
 	private static final int MAX = 10000;
 	
 	public static void main(String args[]){
-		 int arr[] = {1, 4, 45, 6, 10, 8};
+		 int arr[] = {1, 4, 45, 6, -27, 10, 8};
 	     int n = 18;
-	     pairsWithSum(arr,n);
+	     int[] result = new int[2];
+	     result = twoSum(arr,n);
+	     System.out.println(Arrays.toString(result));
 
 	}
 
-	private static void pairsWithSum(int[] arr, int n) {
-		boolean[] map = new boolean[MAX];
-		
-		for (int i =0; i< arr.length; i++){
-			int temp = n - arr[i];
-			System.out.println(temp);
-			if(temp>= 0 && map[temp]){
-				System.out.println("The two numbers are " + temp +" "+ arr[i]);
-			}
-			map[arr[i]]= true;
-		}
-		
-		
+	public static int[] twoSum(int[] nums, int target) {
+	    Map<Integer, Integer> map = new HashMap<>();
+	    for (int i = 0; i < nums.length; i++) {
+	        int complement = target - nums[i];
+	        if (map.containsKey(complement)) {
+	            return new int[] { map.get(complement), i };
+	        }
+	        map.put(nums[i], i);
+	    }
+	    throw new IllegalArgumentException("No two sum solution");
 	}
 
 }
